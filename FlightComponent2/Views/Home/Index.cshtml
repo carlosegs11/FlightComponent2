@@ -1,5 +1,8 @@
 ﻿@model ModelLayer.FlightReservation
 
+
+
+
 @try
 {
     using (Html.BeginForm("_AvailableFlights", "Home", new { originCode = "PEI", originName = "Pereira", destinationCode = "CTG", destinationName = "Cartagena", date = "2021-11-20" }))
@@ -23,30 +26,13 @@
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.DepartureDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <input type="text" class="form-control" name="arrival_Date" id="arrivalDate" placeholder="dd/mm/aaaa" />
+                        <div class="col-md-2"><input class="form-control arrivalDate" type="text" id="arrivalDate" /></div>
                     </div>
 
-                        <button class="btn btn-block btn-outline-success" id="buscarVuelos">Search</button>
-                    </div>
+                    <button class="btn btn-block btn-outline-success" id="buscarVuelos">Search</button>
                 </div>
+            </div>
         </div>
-
-
-        @*<div class="col-md-4">
-            <h2>BD Cities</h2>
-            <ul>
-                @foreach (var city in ViewBag.cityList)
-                {
-                    <li>@city.Name</li>
-                }
-            </ul>
-            <p><button class="btn btn-block btn-outline-success" id="buscarVuelos">Buscar vuelos</button></p>
-        </div>*@
-
-
-
-
-
     }
 }
 catch (Exception e)
@@ -78,3 +64,14 @@ catch (Exception e)
         </div>
     }
 }
+
+
+
+<script>
+    $(document).ready(function () {
+        //Establecer la fecha en un día posterior al actual:
+        var fecha = new Date(Date.now());
+        fecha.setDate(fecha.getDate() + 1);
+        $(".arrivalDate").datetimepicker({ format: 'DD/MM/YYYY', minDate: fecha });
+    });
+</script>
