@@ -36,5 +36,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        var fecha = new Date();
+        fecha.setHours(fecha.getHours() + 24);
+
+        $("#arrivalDate").datetimepicker({ format: 'DD/MM/YYYY' });
+    </script>
 </body>
 </html>

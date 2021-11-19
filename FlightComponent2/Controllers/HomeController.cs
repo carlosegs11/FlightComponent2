@@ -16,7 +16,21 @@ namespace FlightComponent2.Controllers
         private readonly ManageReservation _manageReservation = new ManageReservation();
         public ActionResult Index()
         {
-            ViewBag.cityList = _manageReservation.GetCitiesADO();
+            List<City> cityList = new List<City>();
+            
+            List<SelectListItem> cityListView = new List<SelectListItem>();
+
+            cityList = _manageReservation.GetCitiesADO();
+
+            foreach(var item in cityList)
+            {
+                SelectListItem itemCity = new SelectListItem();
+                itemCity.Text = item.Name;
+                itemCity.Value = item.Id.ToString();
+                cityListView.Add(itemCity);
+            }
+
+            ViewBag.cityList = cityListView;
             return View();
         }
 
