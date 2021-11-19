@@ -1,0 +1,13 @@
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\BusinessLogic.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\BusinessLogic.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\DataLayer.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\ModelLayer.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\DataLayer.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\ModelLayer.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.AssemblyReference.cache
+D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
+D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\Newtonsoft.Json.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\Newtonsoft.Json.xml

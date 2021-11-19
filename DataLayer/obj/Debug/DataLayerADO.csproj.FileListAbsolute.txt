@@ -1,0 +1,9 @@
+D:\CodigoFuente\FlightComponent2\DataLayer\bin\Debug\DataLayer.dll
+D:\CodigoFuente\FlightComponent2\DataLayer\bin\Debug\DataLayer.pdb
+D:\CodigoFuente\FlightComponent2\DataLayer\bin\Debug\ModelLayer.dll
+D:\CodigoFuente\FlightComponent2\DataLayer\bin\Debug\ModelLayer.pdb
+D:\CodigoFuente\FlightComponent2\DataLayer\obj\Debug\DataLayerADO.csproj.AssemblyReference.cache
+D:\CodigoFuente\FlightComponent2\DataLayer\obj\Debug\DataLayerADO.csproj.CoreCompileInputs.cache
+D:\CodigoFuente\FlightComponent2\DataLayer\obj\Debug\DataLayerADO.csproj.CopyComplete
+D:\CodigoFuente\FlightComponent2\DataLayer\obj\Debug\DataLayer.dll
+D:\CodigoFuente\FlightComponent2\DataLayer\obj\Debug\DataLayer.pdb

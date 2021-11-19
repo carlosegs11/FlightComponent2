@@ -1,0 +1,6 @@
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\ModelLayer.dll
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\ModelLayer.pdb
+D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.csproj.AssemblyReference.cache
+D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.csproj.CoreCompileInputs.cache
+D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.dll
+D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.pdb
