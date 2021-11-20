@@ -47,7 +47,9 @@
     <Compile Include="City.cs" />
     <Compile Include="FlightReservation.cs" />
     <Compile Include="HotelReservation.cs" />
+    <Compile Include="ICity.cs" />
     <Compile Include="IPlace.cs" />
+    <Compile Include="IReservation.cs" />
     <Compile Include="RequestAPI.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

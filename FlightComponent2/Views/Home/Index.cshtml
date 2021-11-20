@@ -1,70 +1,38 @@
 ﻿@model ModelLayer.FlightReservation
 
-
-
-
-@try
-{
-    using (Html.BeginForm("_AvailableFlights", "Home", new { originCode = "PEI", originName = "Pereira", destinationCode = "CTG", destinationName = "Cartagena", date = "2021-11-20" }))
-    {
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Available Flights</a>
-                </h4>
-            </div>
-
-            <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body" id="divBody_OportunidadCotizaciones">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DepartureStationName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.DropDownList("MyCities", (IEnumerable<SelectListItem>)ViewBag.cityList)
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Available Flights</a>
+        </h4>
+    </div>
+    <div class="container pl-0 pr-0 mt-1">
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body" id="divBody_OportunidadCotizaciones">
+                <div class="row">
+                    <div class="col-md-2 font-weight-bold">ORIGIN:</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("DepartureStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.cityList)
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ArrivalStationName, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.DropDownList("MyCities", (IEnumerable<SelectListItem>)ViewBag.cityList)
+                    <div class="col-md-2 font-weight-bold">DESTINATION:</div>
+                    <div class="col-md-2">
+                        @Html.DropDownList("ArrivalStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.cityList)
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DepartureDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-2"><input class="form-control arrivalDate" type="text" id="arrivalDate" /></div>
-                    </div>
-
-                    <button class="btn btn-block btn-outline-success" id="buscarVuelos">Search</button>
+                    <div class="col-md-2 font-weight-bold">DEPARTURE DATE:</div>
+                    <input class="form-control arrivalDate" type="text" id="arrivalDate" />
                 </div>
             </div>
-        </div>
-    }
-}
-catch (Exception e)
-{
-    if (e.InnerException != null)
-    {
-        if (e.InnerException.InnerException != null)
-        {
-            <div id="divErrorEnTiempoEjecucionVista" class="alert alert-danger">
-                <strong id="error">Se ha producido el siguiente error en la vista _DetalleOportunidad:</strong>
-                <p>@e.Message</p>
-                <p>@e.InnerException.InnerException.Message</p>
+            <hr />
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><button class="btn btn-block btn-outline-success" id="Search">Search</button></div>
+                <div class="col-md-4"></div>
             </div>
-        }
-        else
-        {
-            <div id="divErrorEnTiempoEjecucionVista" class="alert alert-danger">
-                <strong id="error">Se ha producido el siguiente error en la vista _DetalleOportunidad:</strong>
-                <p>@e.Message</p>
-                <p>@e.InnerException.Message</p>
-            </div>
-        }
-    }
-    else
-    {
-        <div id="divErrorEnTiempoEjecucionVista" class="alert alert-danger">
-            <strong id="error">Se ha producido el siguiente error en la vista _DetalleOportunidad:</strong>
-            <p>@e.Message</p>
         </div>
-    }
-}
-
+    </div>
+    <div id="divDisponiblidadesVuelos"></div>
+    <div class="modal-body" id="modal-body1"></div>
+</div>
 
 
 <script>
@@ -72,6 +40,89 @@ catch (Exception e)
         //Establecer la fecha en un día posterior al actual:
         var fecha = new Date(Date.now());
         fecha.setDate(fecha.getDate() + 1);
-        $(".arrivalDate").datetimepicker({ format: 'DD/MM/YYYY', minDate: fecha });
+        $(".arrivalDate").datetimepicker({ format: 'YYYY/MM/DD', minDate: fecha });
     });
+
+    $("#Search").click(function () {
+        if ($("#DepartureStationNameSelect").val() === $("#ArrivalStationNameSelect").val()) {
+            $("#modal-body1").html("<div class='alert alert-danger'><span class='glyphicon glyphicon-remove' style='font-size:10px'></span>"
+                + "<strong> La ciudad origen no puede ser la misma ciudad de destino.</strong></div>");
+            $("#MensajeModal").modal({ backdrop: true });
+            return;
+        }
+        else {
+            $("#modal-body1").html("");
+        }
+
+        /* Para obtener la ciudad de salida */
+        var oriCity = document.getElementById("DepartureStationNameSelect");
+        var selectedOri = oriCity.options[oriCity.selectedIndex].text;
+
+        /* Para obtener la ciudad de llegada */
+        var desCity = document.getElementById("ArrivalStationNameSelect");
+        var selectedDes = desCity.options[desCity.selectedIndex].text;
+
+        //Cargar la información en una vista parcial:
+        LoadDataDiv("divDisponiblidadesVuelos", "post", {
+            originCode: $("#DepartureStationNameSelect").val(),
+            originName: selectedOri,
+            destinationCode: $("#ArrivalStationNameSelect").val(),
+            destinationName: selectedDes,
+            arrivaldate: $("#arrivalDate").val()
+        }, "AvailableFlights", "Home");
+    });
+
+    function LoadDataDiv(idDiv, metodoGetPost, data, nombreAccion, controlador) {
+        var retorno = "ok";
+        var url = "/" + controlador + "/" + nombreAccion;
+        if (metodoGetPost == "get") {
+            $.get(url, data, function (response, status) {
+                if (status == "success") {
+                    var Arreglo = response.split('|');
+                    if (Arreglo[0].toString() == "error") {
+                        retorno = "error";
+                        $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                            + "<strong> Error,</strong></span> " + Arreglo[1].toString() + "</h4></div>");
+                        $("#MensajeModal").modal({ backdrop: true });
+                    } else {
+                        idDiv = "#" + idDiv;
+                        $(idDiv).html("");
+                        $(idDiv).html(response);
+                    }
+                }
+                else {
+                    retorno = "error";
+                    $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                        + "<strong> Error,</strong></span> No se recibió respuesta del servidor</h4></div>");
+                    $("#MensajeModal").modal({ backdrop: true });
+                }
+            });
+        }
+        if (metodoGetPost == "post") {
+            $.post(url, data, function (response, status) {
+                if (status == "success") {
+                    var Arreglo = response.split('|');
+                    if (Arreglo[0].toString() == "error") {
+                        retorno = "error";
+                        $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                            + "<strong> Error,</strong></span> " + Arreglo[1].toString() + "</h4></div>");
+                        $("#MensajeModal").modal({ backdrop: true });
+
+                    } else {
+                        //Se limpia el div al cual se le va a cargar la data
+                        idDiv = "#" + idDiv;
+                        $(idDiv).html("");
+                        $(idDiv).html(response);
+                    }
+                }
+                else {
+                    retorno = "error";
+                    $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                        + "<strong> Error,</strong></span> No se recibió respuesta del servidor</h4></div>");
+                    $("#MensajeModal").modal({ backdrop: true });
+                }
+            });
+        }
+        return retorno;
+    }
 </script>

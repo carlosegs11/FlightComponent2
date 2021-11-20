@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    public class City
+    public class City : ICity
     {
+        # region Propiedades de la interfaz IReservation
         public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        #endregion
     }
 }

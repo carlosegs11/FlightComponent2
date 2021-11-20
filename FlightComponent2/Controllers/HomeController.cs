@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using FlightComponent2.Utilities;
 using ModelLayer;
 using System;
 using System.Collections.Generic;
@@ -16,31 +17,18 @@ namespace FlightComponent2.Controllers
         private readonly ManageReservation _manageReservation = new ManageReservation();
         public ActionResult Index()
         {
-            List<City> cityList = new List<City>();
-            
-            List<SelectListItem> cityListView = new List<SelectListItem>();
-
-            cityList = _manageReservation.GetCitiesADO();
-
-            foreach(var item in cityList)
-            {
-                SelectListItem itemCity = new SelectListItem();
-                itemCity.Text = item.Name;
-                itemCity.Value = item.Id.ToString();
-                cityListView.Add(itemCity);
-            }
-
-            ViewBag.cityList = cityListView;
+            var cityList = _manageReservation.GetCitiesADO();
+            ViewBag.cityList = FlightFun.GetCitiesView(cityList);
             return View();
         }
 
         [HttpPost]
-        public ActionResult _AvailableFlights(string originCode, string originName, string destinationCode, string destinationName, DateTime date)
+        public ActionResult AvailableFlights(string originCode, string originName, string destinationCode, string destinationName, DateTime arrivaldate)
         {
             List<FlightReservation> flightReservationListView = new List<FlightReservation>();
 
 
-            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(originCode, destinationCode, date, "si");
+            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(originCode, destinationCode, arrivaldate);
 
             foreach (var item in flightReservationList)
             {
@@ -61,11 +49,36 @@ namespace FlightComponent2.Controllers
             return PartialView(flightReservationListView);
         }
 
-        public ActionResult Contact()
+        public ActionResult OtroMetodo(string cadena)
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
+        public ActionResult Flights(string originCode, string originName, string destinationCode, string destinationName, DateTime arrivaldate)
+        {
+            List<FlightReservation> flightReservationListView = new List<FlightReservation>();
+
+
+            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(originCode, destinationCode, arrivaldate);
+
+            foreach (var item in flightReservationList)
+            {
+                FlightReservation flightReservation = new FlightReservation();
+                flightReservation.Id = item.Id;
+                flightReservation.ArrivalStation = item.ArrivalStation;
+                flightReservation.ArrivalStationName = originName;
+                flightReservation.DepartureStation = item.DepartureStation;
+                flightReservation.DepartureStationName = destinationName;
+                flightReservation.FlightNumber = item.FlightNumber;
+                flightReservation.DepartureDate = item.DepartureDate;
+                flightReservation.Price = item.Price;
+
+
+                flightReservationListView.Add(flightReservation);
+            }
+
+            return PartialView(flightReservationListView);
+        }
+
     }
 }

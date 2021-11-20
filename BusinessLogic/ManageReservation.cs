@@ -21,7 +21,7 @@ namespace BusinessLogic
         }
 
 
-        public List<FlightReservation> getApiRequest(string codigoOrigen, string codigoDestino, DateTime Desde, string metodoAPI)
+        public List<FlightReservation> getApiRequest(string codigoOrigen, string codigoDestino, DateTime arrivalDate)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace BusinessLogic
                 string separator = "\"";
                 string parameters = "{" + separator + "Origin" + separator + ":" + separator + codigoOrigen + separator + ",";
                 parameters = parameters + separator + "Destination" + separator + ":" + separator + codigoDestino + separator + ",";
-                parameters = parameters + separator + "From" + separator + ":" + separator + Desde.ToString("yyyy-MM-dd") + separator + "}]";
+                parameters = parameters + separator + "From" + separator + ":" + separator + arrivalDate.ToString("yyyy-MM-dd") + separator + "}]";
 
                 string responseValue = string.Empty;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlService);

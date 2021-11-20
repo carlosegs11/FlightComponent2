@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<ModelLayer.FlightReservation>
 
-@{
+@*@{
     ViewBag.Title = "AvailableFlights";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+}*@
 
 <h2>AvailableFlights</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DepartureStationName)
+            @Html.Label("ORIGIN")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArrivalStationName)
+            @Html.Label("DESTINATION")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DepartureDate)
+            @Html.Label("DEPARTURE DATE")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.Label("PRICE")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FlightNumber)
+            @Html.Label("FLIGHT NUMBER")
         </th>
         <th></th>
     </tr>
