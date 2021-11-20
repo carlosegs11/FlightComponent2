@@ -45,8 +45,9 @@
 
     $("#Search").click(function () {
         if ($("#DepartureStationNameSelect").val() === $("#ArrivalStationNameSelect").val()) {
+
             $("#modal-body1").html("<div class='alert alert-danger'><span class='glyphicon glyphicon-remove' style='font-size:10px'></span>"
-                + "<strong> La ciudad origen no puede ser la misma ciudad de destino.</strong></div>");
+                + "<strong> The city of origin and destination cannot be the same </strong></div>");
             $("#MensajeModal").modal({ backdrop: true });
             return;
         }

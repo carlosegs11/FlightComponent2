@@ -205,12 +205,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\AvailableFlights.cshtml" />
-    <Content Include="Views\Home\OtroMetodo.cshtml" />
-    <Content Include="Views\Home\Flights.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,6 +229,10 @@
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{C8CECB21-CDFF-459D-98B5-8E95FFC988F4}</Project>
       <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayerADO.csproj">
+      <Project>{71778F86-E50D-4DE4-B5E4-F292449D9962}</Project>
+      <Name>DataLayerADO</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
       <Project>{94CB5596-B2BB-4CC5-92F6-93CD4D21EE47}</Project>

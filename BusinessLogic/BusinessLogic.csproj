@@ -56,6 +56,10 @@
       <Project>{94CB5596-B2BB-4CC5-92F6-93CD4D21EE47}</Project>
       <Name>ModelLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServicesLayer\ServicesLayer.csproj">
+      <Project>{80832774-5AD7-42A1-87F5-0E8D61234A40}</Project>
+      <Name>ServicesLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

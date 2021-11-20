@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DataLayer;
 using FlightComponent2.Utilities;
 using ModelLayer;
 using System;
@@ -25,60 +26,17 @@ namespace FlightComponent2.Controllers
         [HttpPost]
         public ActionResult AvailableFlights(string originCode, string originName, string destinationCode, string destinationName, DateTime arrivaldate)
         {
-            List<FlightReservation> flightReservationListView = new List<FlightReservation>();
+            
+            IVivaAirParameters vivaAirParameters = new VivaAirParameters { Origin = originCode, Destination = destinationCode, From = arrivaldate };
+            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(vivaAirParameters, DL_Connection.Service);
 
-
-            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(originCode, destinationCode, arrivaldate);
-
-            foreach (var item in flightReservationList)
+            if (flightReservationList.Count.Equals(0))
             {
-                FlightReservation flightReservation = new FlightReservation();
-                flightReservation.Id = item.Id;
-                flightReservation.ArrivalStation = item.ArrivalStation;
-                flightReservation.ArrivalStationName = originName;
-                flightReservation.DepartureStation = item.DepartureStation;
-                flightReservation.DepartureStationName = destinationName;
-                flightReservation.FlightNumber = item.FlightNumber;
-                flightReservation.DepartureDate = item.DepartureDate;
-                flightReservation.Price = item.Price;
-                
-
-                flightReservationListView.Add(flightReservation);
+                ViewBag.MessageInfo = "There aren't flights for the chosen options... try again please";
+                return View("~/Views/Shared/Error.cshtml");
             }
 
-            return PartialView(flightReservationListView);
+            return PartialView(FlightFun.GetResponseView(flightReservationList, originName, destinationName));
         }
-
-        public ActionResult OtroMetodo(string cadena)
-        {
-            return View();
-        }
-
-        public ActionResult Flights(string originCode, string originName, string destinationCode, string destinationName, DateTime arrivaldate)
-        {
-            List<FlightReservation> flightReservationListView = new List<FlightReservation>();
-
-
-            List<FlightReservation> flightReservationList = _manageReservation.getApiRequest(originCode, destinationCode, arrivaldate);
-
-            foreach (var item in flightReservationList)
-            {
-                FlightReservation flightReservation = new FlightReservation();
-                flightReservation.Id = item.Id;
-                flightReservation.ArrivalStation = item.ArrivalStation;
-                flightReservation.ArrivalStationName = originName;
-                flightReservation.DepartureStation = item.DepartureStation;
-                flightReservation.DepartureStationName = destinationName;
-                flightReservation.FlightNumber = item.FlightNumber;
-                flightReservation.DepartureDate = item.DepartureDate;
-                flightReservation.Price = item.Price;
-
-
-                flightReservationListView.Add(flightReservation);
-            }
-
-            return PartialView(flightReservationListView);
-        }
-
     }
 }

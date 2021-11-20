@@ -23,5 +23,27 @@ namespace FlightComponent2.Utilities
 
             return cityListView;
         }
+
+        public static List<FlightReservation> GetResponseView (List<FlightReservation> flightReservationList, string originName, string destinationName)
+        {
+            List<FlightReservation> flightReservationListView = new List<FlightReservation>();
+            foreach (var item in flightReservationList)
+            {
+                FlightReservation flightReservation = new FlightReservation();
+                flightReservation.Id = item.Id;
+                flightReservation.ArrivalStation = item.ArrivalStation;
+                flightReservation.ArrivalStationName = originName;
+                flightReservation.DepartureStation = item.DepartureStation;
+                flightReservation.DepartureStationName = destinationName;
+                flightReservation.FlightNumber = item.FlightNumber;
+                flightReservation.DepartureDate = item.DepartureDate;
+                flightReservation.Price = item.Price;
+
+
+                flightReservationListView.Add(flightReservation);
+            }
+
+            return flightReservationListView;
+        }
     }
 }

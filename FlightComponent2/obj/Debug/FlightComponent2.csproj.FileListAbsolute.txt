@@ -90,3 +90,5 @@ D:\CodigoFuente\FlightComponent2\FlightComponent2\obj\Debug\FlightComponent2.csp
 D:\CodigoFuente\FlightComponent2\FlightComponent2\obj\Debug\FlightComponent2.csproj.CopyComplete
 D:\CodigoFuente\FlightComponent2\FlightComponent2\obj\Debug\FlightComponent2.dll
 D:\CodigoFuente\FlightComponent2\FlightComponent2\obj\Debug\FlightComponent2.pdb
+D:\CodigoFuente\FlightComponent2\FlightComponent2\bin\ServicesLayer.dll
+D:\CodigoFuente\FlightComponent2\FlightComponent2\bin\ServicesLayer.pdb

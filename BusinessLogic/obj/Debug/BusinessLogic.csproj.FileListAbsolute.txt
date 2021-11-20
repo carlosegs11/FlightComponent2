@@ -11,3 +11,5 @@ D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.Co
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.dll
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\ServicesLayer.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\ServicesLayer.pdb
