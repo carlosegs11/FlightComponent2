@@ -3,9 +3,10 @@
     /// <summary>
     /// Contrato que deben respetar todas las clases de tipo reserva (Injección de dependencias)
     /// </summary>
-    public interface IPlace
+    public interface ITransport
     {
-        string CityCode { get; set; }
-        string CityName { get; set; }
+        string IdTransport { get; set; }
+
+        TransportType TransportType { get; set; }
     }
 }

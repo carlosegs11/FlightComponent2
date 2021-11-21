@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModelLayer
 {
     /// <summary>
     /// Herencia múltiple que en c# solo se permite a través de las Interfaces
     /// </summary>
-    class CarReservation : IReservation, IPlace
+    class CarReservation : IReservation, IPlace, ITransport
     {
         # region Propiedades de la interfaz IReservation
-        public string CarBrand { get; set; }
-        string IReservation.Id { get; set; }
-        string IReservation.ReservationNumber { get; set; }
-        string IReservation.DepartureStation { get; set; }
-        string IReservation.DepartureStationName { get; set; }
-        string IReservation.ArrivalStation { get; set; }
-        string IReservation.ArrivalStationName { get; set; }
-        DateTime IReservation.DepartureDate { get; set; }
-        decimal IReservation.Price { get; set; }
-        string IReservation.Currency { get; set; }
+        public string Id { get; set; }
+        public string ReservationNumber { get; set; }
+        public string DepartureStation { get; set; }
+        public string DepartureStationName { get; set; }
+        public string ArrivalStation { get; set; }
+        public string ArrivalStationName { get; set; }
+        public DateTime DepartureDate { get; set; }
+        public decimal Price { get; set; }
+        public string Currency { get; set; }
         #endregion
 
         # region Propiedades de la interfaz Iplace
@@ -29,9 +24,26 @@ namespace ModelLayer
         public string CityName { get; set; }
         #endregion
 
-        # region Propiedades propias de la clase FlightReservation
-        public string CarId { get; set; }
+        #region Propiedades de la interfaz ITransport
+        public string IdTransport { get; set; }
+        public TransportType TransportType { get; set; }
+
         #endregion
+
+        #region Propiedades propias de la clase CartReservation
+        public string CarId { get; set; }
+        public string CarBrand { get; set; }
+
+        #endregion
+
+        /// <summary>
+        /// Polimorfismo -> Se sobre escribe el método y se le brinda una funcionalidad diferente
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{Id},{ReservationNumber},{DepartureStation}, {DepartureStationName},{ArrivalStation}, {ArrivalStationName},{DepartureDate},{Price},{Currency}";
+        }
 
     }
 }

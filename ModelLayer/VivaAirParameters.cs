@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModelLayer
 {
+    /// <summary>
+    /// Herencia de la interfaz
+    /// </summary>
     public class VivaAirParameters : IVivaAirParameters
     {
         public string Origin { get; set; }

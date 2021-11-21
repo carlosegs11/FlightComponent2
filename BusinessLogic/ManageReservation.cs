@@ -1,5 +1,6 @@
 ﻿using DataLayer;
 using DataLayerEF2;
+using Microsoft.Extensions.Logging;
 using ModelLayer;
 using ServicesLayer;
 using System;
@@ -7,11 +8,8 @@ using System.Collections.Generic;
 
 namespace BusinessLogic
 {
-
     public class ManageReservation
     {
-        
-
         public List<IIATA> GetIataADO()
         {
             List<IIATA> iataList = DL_IATA.Instance.GetIata();
@@ -26,37 +24,21 @@ namespace BusinessLogic
 
         public bool SaveReservation(string departureStation, string arrivalStation, DateTime departureDate, string flightNumber, decimal price, string currency)
         {
-            try
+            using (ReservationEntities db = new ReservationEntities())
             {
-                using (ReservationEntities db = new ReservationEntities())
+                Reservation flightReservation = new Reservation
                 {
-                    Reservation flightReservation = new Reservation
-                    {
-                        DepartureStation = departureStation,
-                        ArrivalStation = arrivalStation,
-                        DepartureDate = departureDate,
-                        Number = flightNumber,
-                        Price = price,
-                        Currency = currency
-                    };
-                    db.Reservation.Add(flightReservation);
-                    db.SaveChanges();
-                }
-                return true;
+                    DepartureStation = departureStation,
+                    ArrivalStation = arrivalStation,
+                    DepartureDate = departureDate,
+                    Number = flightNumber,
+                    Price = price,
+                    Currency = currency
+                };
+                db.Reservation.Add(flightReservation);
+                db.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                if (ex.InnerException != null)
-                {
-                    string error = ex.Message + ex.InnerException.ToString();
-                    return false;
-                }
-                else
-                {
-                    string error = ex.Message + ex.InnerException.ToString();
-                    return false;
-                }
-            }
+            return true;
         }
     }
 }

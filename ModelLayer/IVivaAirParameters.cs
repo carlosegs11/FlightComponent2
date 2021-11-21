@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModelLayer
 {
+    /// <summary>
+    /// Contrato que deben respetar todas las clases de tipo VivaAirParameters (Injección de dependencias)
+    /// </summary>
     public interface IVivaAirParameters
     {
         string Origin { get; set; }

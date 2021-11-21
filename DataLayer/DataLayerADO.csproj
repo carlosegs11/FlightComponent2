@@ -45,7 +45,6 @@
     <Compile Include="DL_IATA.cs" />
     <Compile Include="DL_Connection.cs" />
     <Compile Include="DL_FlightReservation.cs" />
-    <Compile Include="DL_Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

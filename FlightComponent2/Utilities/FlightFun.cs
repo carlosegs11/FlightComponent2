@@ -1,8 +1,5 @@
 ﻿using ModelLayer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FlightComponent2.Utilities
@@ -42,6 +39,8 @@ namespace FlightComponent2.Utilities
                 flightReservation.DepartureDate = item.DepartureDate;
                 flightReservation.Price = item.Price;
                 flightReservation.Currency = item.Currency;
+                flightReservation.TransportType = TransportType.Airplane;
+                flightReservation.IdTransport = "HK-41-P";
 
 
                 flightReservationListView.Add(flightReservation);
