@@ -7,21 +7,24 @@ using System.Web.Mvc;
 
 namespace FlightComponent2.Utilities
 {
+    /// <summary>
+    /// Clase abstracta que no permite crear objetos a partir de ella.
+    /// </summary>
     public abstract class FlightFun
     {
-        public static List<SelectListItem> GetCitiesView (List<City> cityList)
+        public static List<SelectListItem> GetIataView (List<IIATA> iataList)
         {
-            List<SelectListItem> cityListView = new List<SelectListItem>();
+            List<SelectListItem> iataListView = new List<SelectListItem>();
 
-            foreach (var item in cityList)
+            foreach (var item in iataList)
             {
-                SelectListItem itemCity = new SelectListItem();
-                itemCity.Text = item.Name;
-                itemCity.Value = item.Code;
-                cityListView.Add(itemCity);
+                SelectListItem iataItem = new SelectListItem();
+                iataItem.Text = item.Name;
+                iataItem.Value = item.Code;
+                iataListView.Add(iataItem);
             }
 
-            return cityListView;
+            return iataListView;
         }
 
         public static List<FlightReservation> GetResponseView (List<FlightReservation> flightReservationList, string originName, string destinationName)
@@ -32,12 +35,13 @@ namespace FlightComponent2.Utilities
                 FlightReservation flightReservation = new FlightReservation();
                 flightReservation.Id = item.Id;
                 flightReservation.ArrivalStation = item.ArrivalStation;
-                flightReservation.ArrivalStationName = originName;
+                flightReservation.ArrivalStationName = destinationName;
                 flightReservation.DepartureStation = item.DepartureStation;
-                flightReservation.DepartureStationName = destinationName;
+                flightReservation.DepartureStationName = originName;
                 flightReservation.FlightNumber = item.FlightNumber;
                 flightReservation.DepartureDate = item.DepartureDate;
                 flightReservation.Price = item.Price;
+                flightReservation.Currency = item.Currency;
 
 
                 flightReservationListView.Add(flightReservation);

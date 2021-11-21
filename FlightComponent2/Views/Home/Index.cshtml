@@ -12,11 +12,11 @@
                 <div class="row">
                     <div class="col-md-2 font-weight-bold">ORIGIN:</div>
                     <div class="col-md-2">
-                        @Html.DropDownList("DepartureStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.cityList)
+                        @Html.DropDownList("DepartureStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.iataList)
                     </div>
                     <div class="col-md-2 font-weight-bold">DESTINATION:</div>
                     <div class="col-md-2">
-                        @Html.DropDownList("ArrivalStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.cityList)
+                        @Html.DropDownList("ArrivalStationNameSelect", (IEnumerable<SelectListItem>)ViewBag.iataList)
                     </div>
                     <div class="col-md-2 font-weight-bold">DEPARTURE DATE:</div>
                     <input class="form-control arrivalDate" type="text" id="arrivalDate" />
@@ -30,14 +30,13 @@
             </div>
         </div>
     </div>
-    <div id="divDisponiblidadesVuelos"></div>
+    <div id="divAvailableFlight"></div>
     <div class="modal-body" id="modal-body1"></div>
 </div>
 
 
 <script>
     $(document).ready(function () {
-        //Establecer la fecha en un día posterior al actual:
         var fecha = new Date(Date.now());
         fecha.setDate(fecha.getDate() + 1);
         $(".arrivalDate").datetimepicker({ format: 'YYYY/MM/DD', minDate: fecha });
@@ -63,8 +62,7 @@
         var desCity = document.getElementById("ArrivalStationNameSelect");
         var selectedDes = desCity.options[desCity.selectedIndex].text;
 
-        //Cargar la información en una vista parcial:
-        LoadDataDiv("divDisponiblidadesVuelos", "post", {
+        LoadDataDiv("divAvailableFlight", "post", {
             originCode: $("#DepartureStationNameSelect").val(),
             originName: selectedOri,
             destinationCode: $("#ArrivalStationNameSelect").val(),
@@ -110,7 +108,6 @@
                         $("#MensajeModal").modal({ backdrop: true });
 
                     } else {
-                        //Se limpia el div al cual se le va a cargar la data
                         idDiv = "#" + idDiv;
                         $(idDiv).html("");
                         $(idDiv).html(response);

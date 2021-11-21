@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModelLayer
 {
+    /// <summary>
+    /// Herencia múltiple que en c# solo se permite a través de las Interfaces
+    /// </summary>
     public class FlightReservation : IReservation, IPlace
     {
         # region Propiedades de la interfaz IReservation
@@ -28,5 +27,14 @@ namespace ModelLayer
         # region Propiedades propias de la clase FlightReservation
         public string FlightNumber { get; set; }
         #endregion
+
+        /// <summary>
+        /// Polimorfismo -> Se sobre escribe el método y se le brinda una funcionalidad diferente
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{Id},{ReservationNumber},{DepartureStation}, {DepartureStationName},{ArrivalStation}, {ArrivalStationName},{DepartureDate},{Price},{Currency}";
+        }
     }
 }

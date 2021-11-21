@@ -44,15 +44,13 @@
     <Compile Include="Accommodation.cs" />
     <Compile Include="AccommodationType.cs" />
     <Compile Include="CarReservation.cs" />
-    <Compile Include="City.cs" />
+    <Compile Include="IATA.cs" />
     <Compile Include="FlightReservation.cs" />
-    <Compile Include="HotelReservation.cs" />
-    <Compile Include="ICity.cs" />
+    <Compile Include="IIATA.cs" />
     <Compile Include="IPlace.cs" />
     <Compile Include="IReservation.cs" />
     <Compile Include="IVivaAirParameters.cs" />
     <Compile Include="RequestAPI.cs" />
-    <Compile Include="Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transport.cs" />
     <Compile Include="TransportType.cs" />

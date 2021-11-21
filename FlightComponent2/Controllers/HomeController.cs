@@ -11,6 +11,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace FlightComponent2.Controllers
 {
     public class HomeController : Controller
@@ -18,8 +19,8 @@ namespace FlightComponent2.Controllers
         private readonly ManageReservation _manageReservation = new ManageReservation();
         public ActionResult Index()
         {
-            var cityList = _manageReservation.GetCitiesADO();
-            ViewBag.cityList = FlightFun.GetCitiesView(cityList);
+            List<IIATA> iataList = _manageReservation.GetIataADO();
+            ViewBag.iataList = FlightFun.GetIataView(iataList);
             return View();
         }
 
@@ -37,6 +38,21 @@ namespace FlightComponent2.Controllers
             }
 
             return PartialView(FlightFun.GetResponseView(flightReservationList, originName, destinationName));
+        }
+
+        public ActionResult SaveReservation(string departureStation, string arrivalStation, DateTime departureDate, string flightNumber, decimal price, string currency)
+        {
+            
+            var request =_manageReservation.SaveReservation(departureStation, arrivalStation, departureDate, flightNumber, price, currency);
+            if (request)
+            {
+                ViewBag.MessageInfo = "Successfully booked flight";
+            }
+            else 
+            {
+                ViewBag.MessageInfo = "We had trouble booking the flight. Try again...";
+            }
+            return View();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<ModelLayer.FlightReservation>
 
 @*@{
-    ViewBag.Title = "AvailableFlights";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}*@
+        ViewBag.Title = "AvailableFlights";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
 
 <h2>AvailableFlights</h2>
 
@@ -24,30 +24,136 @@
         <th>
             @Html.Label("FLIGHT NUMBER")
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureStationName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArrivalStationName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlightNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Select", "Select", new { id=item.Id }) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="FlightRows">
+            <td>
+                <div hidden id="departureStation">@Html.DisplayFor(modelItem => item.DepartureStation)</div>
+                <div id="departureStationName">@Html.DisplayFor(modelItem => item.DepartureStationName)</div>
+            </td>
+            <td>
+                <div hidden id="arrivalStation">@Html.DisplayFor(modelItem => item.ArrivalStation)</div>
+                <div id="arrivalStationName">@Html.DisplayFor(modelItem => item.ArrivalStationName)</div>
+            </td>
+            <td>
+                <div id="departureDate">@Html.DisplayFor(modelItem => item.DepartureDate)</div>
+            </td>
+            <td>
+                <div id="price">@Html.DisplayFor(modelItem => item.Price)</div>
+            </td>
+            <td>
+                <div id="flightNumber">@Html.DisplayFor(modelItem => item.FlightNumber)</div>
+                <div hidden id="currency">@Html.DisplayFor(modelItem => item.Currency)</div>
+            </td>
+            <td>
+                <button class="btn btn-block btn-outline-success" id="Select">Select</button>
+            </td>
+        </tr>
+    }
 
 </table>
+<div id="divAvailableFlight"></div>
+<div class="modal-body" id="modal-body1"></div>
+
+<script>
+    $(".FlightRows").click(function () {
+        var departureStation = $('#departureStation').html();
+        var arrivalStation = $('#arrivalStation').html();
+        var departureDate = $('#departureDate').html();
+        departureDate = departureDate.substring(0, 10);
+        departureDate = departureDate.replace('/', '-');
+        departureDate = departureDate.replace('/', '-');
+        var price = $('#price').html();
+        price = parseInt(price);
+        console.log(price);
+        var flightNumber = $('#flightNumber').html();
+        var currency = $('#currency').html();
+
+        console.log(departureStation, arrivalStation, departureDate, price, flightNumber, currency);
+
+        LoadDataDiv("divAvailableFlight", "post", {
+            departureStation: departureStation,
+            arrivalStation: arrivalStation,
+            departureDate: departureDate,
+            price: price,
+            flightNumber: flightNumber,
+            currency: currency
+        }, "SaveReservation", "Home");
+
+        //$.ajax({
+        //    url: '/Home/SaveReservation',
+        //    type: 'GET',
+        //    dataType: "json",
+        //    data: {
+        //        departureStation: departureStation,
+        //        arrivalStation: arrivalStation,
+        //        departureDate: departureDate,
+        //        price: price,
+        //        flightNumber: flightNumber,
+        //        currency: currency
+        //    },
+        //    error: function (ex) {
+        //        alert(ex.responseText);
+        //    },
+        //    success: function (response) {
+        //        alert("Reserva exitosa");
+        //       // var data = jQuery.parseJSON(response.Results);
+        //    }
+        //});
+    });
+
+    function LoadDataDiv(idDiv, metodoGetPost, data, nombreAccion, controlador) {
+        var retorno = "ok";
+        var url = "/" + controlador + "/" + nombreAccion;
+        if (metodoGetPost == "get") {
+            $.get(url, data, function (response, status) {
+                if (status == "success") {
+                    var Arreglo = response.split('|');
+                    if (Arreglo[0].toString() == "error") {
+                        retorno = "error";
+                        $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                            + "<strong> Error,</strong></span> " + Arreglo[1].toString() + "</h4></div>");
+                        $("#MensajeModal").modal({ backdrop: true });
+                    } else {
+                        idDiv = "#" + idDiv;
+                        $(idDiv).html("");
+                        $(idDiv).html(response);
+                    }
+                }
+                else {
+                    retorno = "error";
+                    $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                        + "<strong> Error,</strong></span> No se recibió respuesta del servidor</h4></div>");
+                    $("#MensajeModal").modal({ backdrop: true });
+                }
+            });
+        }
+        if (metodoGetPost == "post") {
+            $.post(url, data, function (response, status) {
+                if (status == "success") {
+                    var Arreglo = response.split('|');
+                    if (Arreglo[0].toString() == "error") {
+                        retorno = "error";
+                        $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                            + "<strong> Error,</strong></span> " + Arreglo[1].toString() + "</h4></div>");
+                        $("#MensajeModal").modal({ backdrop: true });
+
+                    } else {
+                        idDiv = "#" + idDiv;
+                        $(idDiv).html("");
+                        $(idDiv).html(response);
+                    }
+                }
+                else {
+                    retorno = "error";
+                    $("#modal-body").html("<div class='alert alert-danger'><h4><span class='glyphicon glyphicon-remove' style='font-size:20px'></span>"
+                        + "<strong> Error,</strong></span> No se recibió respuesta del servidor</h4></div>");
+                    $("#MensajeModal").modal({ backdrop: true });
+                }
+            });
+        }
+        return retorno;
+    }
+</script>
