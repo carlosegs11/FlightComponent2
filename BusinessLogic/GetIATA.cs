@@ -1,12 +1,11 @@
 ﻿using ModelLayer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
+    /// <summary>
+    /// Principio SOLID # 5.  Dependency Inversion Principle. Esta clase desacopla el código.  Esta clase recibe una abstracción como parámetro.
+    /// </summary>
     public class GetIATA
     {
         private IGet _get;

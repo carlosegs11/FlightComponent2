@@ -1,14 +1,10 @@
-﻿using DataLayerEF2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace BusinessLogic
 {
     public class SaveReservation 
     {
+        /// Principio SOLID # 5.  Dependency Inversion Principle. Esta clase desacopla el código.  Esta clase recibe una abstracción como parámetro.
         private ISave _save;
         public SaveReservation (ISave save)
         {

@@ -1,7 +1,7 @@
 ﻿namespace ModelLayer
 {
     /// <summary>
-    /// Contrato que deben respetar la clase de tipo ciudad (Injección de dependencias)
+    /// Contrato que deben respetar todas las clases que hereden de esta interfaz
     /// </summary>
     public interface IIATA
     {

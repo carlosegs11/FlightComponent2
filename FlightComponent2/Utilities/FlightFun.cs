@@ -5,7 +5,7 @@ using System.Web.Mvc;
 namespace FlightComponent2.Utilities
 {
     /// <summary>
-    /// Clase abstracta que no permite crear objetos a partir de ella.
+    /// Clase abstracta que no permite crear objetos a partir de ella.  Se utiliza para funcionalidades adicinales del aplicativo
     /// </summary>
     public abstract class FlightFun
     {
@@ -39,7 +39,7 @@ namespace FlightComponent2.Utilities
                 flightReservation.DepartureDate = item.DepartureDate;
                 flightReservation.Price = item.Price;
                 flightReservation.Currency = item.Currency;
-                flightReservation.TransportType = TransportType.Airplane;
+                flightReservation.TransportType = transportType.Airplane;
                 flightReservation.IdTransport = "HK-41-P";
 
 

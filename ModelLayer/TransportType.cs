@@ -1,8 +1,9 @@
 ﻿namespace ModelLayer
 {
-    public enum TransportType
+    public enum transportType
     {
         Airplane,
+        Helicopter,
         Car,
         Motorcycle,
         Motorboat

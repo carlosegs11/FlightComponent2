@@ -2,6 +2,9 @@
 
 namespace ModelLayer
 {
+    /// <summary>
+    /// Hereda de la Interfaz IParameters
+    /// </summary>
     public class VivaAirParameters : IParameters
     {
         public string Origin { get; set; }

@@ -3,7 +3,7 @@
 namespace ModelLayer
 {
     /// <summary>
-    /// Contrato que deben respetar todas las clases de tipo reserva (Injección de dependencias)
+    /// Contrato que deben respetar todas las clases que hereden de esta interfaz
     /// </summary>
     public interface IReservation
     {

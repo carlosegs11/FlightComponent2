@@ -1,5 +1,8 @@
 ﻿namespace ModelLayer
 {
+    /// <summary>
+    /// Hereda de la Interfaz IIATA
+    /// </summary>
     public class IATA : IIATA
     {
         # region Propiedades de la interfaz IIATA

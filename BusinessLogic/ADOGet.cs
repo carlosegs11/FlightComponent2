@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace BusinessLogic
 {
+    /// <summary>
+    /// Principio SOLID # 1.  Principio de responsabilidad única
+    /// </summary>
     public class ADOGet : IGet
     {
         public List<IIATA> GetIATA()

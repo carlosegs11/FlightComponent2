@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ModelLayer;
+using System.Net;
 
 namespace BusinessLogic
 {
+    /// <summary>
+    /// Contrato que deben respetar todas las clases que hereden de esta interfaz
+    /// </summary>
     public interface ITransport
     {
-        string FlightNumber { get; set; }
-        string Save();
+        string IdTransport { get; set; }
+        transportType TransportType { get; set; }
     }
 }

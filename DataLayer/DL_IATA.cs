@@ -1,5 +1,4 @@
 ﻿using ModelLayer;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -35,31 +34,21 @@ namespace DataLayer
                 SqlCommand cmd = new SqlCommand("sp_GetIATA", oConnection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                try
-                {
-                    oConnection.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
+                oConnection.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
 
-                    while (dr.Read())
+                while (dr.Read())
+                {
+                    iataList.Add(new IATA()
                     {
-                        iataList.Add(new IATA()
-                        {
-                            Code = dr["Code"].ToString(),
-                            Name = dr["Name"].ToString()
-                        });
-                    }
-                    dr.Close();
-
-                    return iataList;
-
+                        Code = dr["Code"].ToString(),
+                        Name = dr["Name"].ToString()
+                    });
                 }
-                catch (Exception ex)
-                {
-                    iataList = null;
-                    return iataList;
-                }
+                dr.Close();
+
+                return iataList;
             }
-
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 
 namespace ModelLayer
 {
     /// <summary>
     /// Herencia múltiple que en c# solo se permite a través de las Interfaces
     /// </summary>
-    public class FlightReservation : IReservation, IPlace
+    public class FlightReservation : IReservation, ITransport
     {
 
 
@@ -21,20 +22,14 @@ namespace ModelLayer
         public string Currency { get; set; }
         #endregion
 
-        # region Propiedades de la interfaz Iplace
-        public string CityCode { get; set; }
-        public string CityName { get; set; }
-        #endregion
-
         #region Propiedades de la interfaz ITransport
         public string IdTransport { get; set; }
-        public TransportType TransportType  { get; set; }
+        public transportType TransportType  { get; set; }
   
         #endregion
 
         #region Propiedades propias de la clase FlightReservation
         public string FlightNumber { get; set; }
-
         #endregion
 
         /// <summary>

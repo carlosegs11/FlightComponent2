@@ -3,6 +3,9 @@ using System.IO;
 
 namespace FlightComponent2.Utilities
 {
+    /// <summary>
+    /// Logging personalizado en la aplicación
+    /// </summary>
     public class CustomLog
     {
         private string Path = "";
