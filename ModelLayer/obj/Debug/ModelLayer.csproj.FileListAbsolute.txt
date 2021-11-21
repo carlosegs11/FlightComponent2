@@ -4,3 +4,9 @@ D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.csproj.CoreComp
 D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.dll
 D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.pdb
 D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.csproj.AssemblyReference.cache
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\DataLayerEF2.dll
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\EntityFramework.dll
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\DataLayerEF2.pdb
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\DataLayerEF2.dll.config
+D:\CodigoFuente\FlightComponent2\ModelLayer\bin\Debug\EntityFramework.xml
+D:\CodigoFuente\FlightComponent2\ModelLayer\obj\Debug\ModelLayer.csproj.CopyComplete

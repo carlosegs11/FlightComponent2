@@ -42,19 +42,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarReservation.cs" />
+    <Compile Include="Flight.cs" />
     <Compile Include="IATA.cs" />
     <Compile Include="FlightReservation.cs" />
     <Compile Include="IIATA.cs" />
+    <Compile Include="IParameters.cs" />
     <Compile Include="IPlace.cs" />
     <Compile Include="IReservation.cs" />
-    <Compile Include="IVivaAirParameters.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ITransport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportType.cs" />
     <Compile Include="VivaAirParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayerEF2\DataLayerEF2.csproj">
+      <Project>{70AD91AA-BDFF-44B8-B752-CF19667F2EBE}</Project>
+      <Name>DataLayerEF2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

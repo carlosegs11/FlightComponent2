@@ -21,3 +21,13 @@ D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.Co
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.dll
 D:\CodigoFuente\FlightComponent2\BusinessLogic\obj\Debug\BusinessLogic.pdb
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Buffers.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Memory.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Numerics.Vectors.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Buffers.xml
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Memory.xml
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Numerics.Vectors.xml
+D:\CodigoFuente\FlightComponent2\BusinessLogic\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

@@ -5,7 +5,7 @@ namespace ModelLayer
     /// <summary>
     /// Herencia múltiple que en c# solo se permite a través de las Interfaces
     /// </summary>
-    class CarReservation : IReservation, IPlace, ITransport
+    class CarReservation : IReservation, IPlace
     {
         # region Propiedades de la interfaz IReservation
         public string Id { get; set; }

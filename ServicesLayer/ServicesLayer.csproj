@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AviancaApi.cs" />
+    <Compile Include="IWebApi.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VivaAirApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

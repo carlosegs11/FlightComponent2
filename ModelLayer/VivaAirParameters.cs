@@ -2,10 +2,7 @@
 
 namespace ModelLayer
 {
-    /// <summary>
-    /// Herencia de la interfaz
-    /// </summary>
-    public class VivaAirParameters : IVivaAirParameters
+    public class VivaAirParameters : IParameters
     {
         public string Origin { get; set; }
         public string Destination { get; set; }

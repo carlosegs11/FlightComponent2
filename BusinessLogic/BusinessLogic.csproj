@@ -69,7 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManageReservation.cs" />
+    <Compile Include="ADOSave.cs" />
+    <Compile Include="EFGet.cs" />
+    <Compile Include="EFSave.cs" />
+    <Compile Include="ADOGet.cs" />
+    <Compile Include="GetIATA.cs" />
+    <Compile Include="IGet.cs" />
+    <Compile Include="ISave.cs" />
+    <Compile Include="SaveReservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public interface ITransport
+    public interface IGet
     {
-        string FlightNumber { get; set; }
-        string Save();
+        List<IIATA> GetIATA();
     }
 }

@@ -27,7 +27,7 @@ namespace DataLayer
             }
         }
 
-        public List<IIATA> GetIata()
+        public List<IIATA> GetIATA()
         {
             List<IIATA> iataList = new List<IIATA>();
             using (SqlConnection oConnection = new SqlConnection(DL_Connection.CN))
